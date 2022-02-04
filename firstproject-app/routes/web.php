@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home', [
-        "tittle" => "Home"
+        "title" => "Home"
     ]);
 });
 
@@ -25,7 +25,7 @@ Route::get('/about', function () {
         "name" => "Yana",
         "email" => "yanaandika@gmail.com",
         "image" => "img/pasphoto.JPG",
-        "tittle" => "About"
+        "title" => "About"
     ]);
 });
 
