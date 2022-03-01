@@ -16,4 +16,12 @@ class Post extends Model
 
     /*Ini Yang gak boleh diisi, lainnya boleh*/
     protected $guarded = ['id'];
+
+    /*
+     * Method Ini berfungsi untuk mengatur relasi ke class category
+     * One To Mony
+     * */
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }
