@@ -35,25 +35,25 @@ Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
-Route::get('/categories/{category:slug}', function (Category $category){
-    return view('category',[
-        'title' => $category->name,
-        'posts' => $category->posts,
-        'category' => $category->name
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'title' => "Post By Category : $category->name",
+        'posts' => $category->posts->load('category','author')
     ]);
 });
 
-Route::get('/categories',function() {
-    return view('categories',[
+Route::get('/categories', function () {
+    return view('categories', [
         'title' => 'Post Categories',
         'categories' => Category::all()
     ]);
 });
 
-Route::get('authors/{author:username}', function (User $author){
-    return view('posts',[
-        'title' => 'Users Posts',
-        'posts' => $author->posts,
+Route::get('authors/{author:username}', function (User $author) {
+    return view('posts', [
+        'title' => "Post By Author : $author->name",
+        /*Eager Load, Untuk mengambil sekalian data category dan author untuk menghindari N+1*/
+        'posts' => $author->posts->load('category','author')
     ]);
 });
 
