@@ -16,6 +16,7 @@ class Post extends Model
 
     /*Ini Yang gak boleh diisi, lainnya boleh*/
     protected $guarded = ['id'];
+    protected $with = ['author','category'];
 
     /*
      * Method Ini berfungsi untuk mengatur relasi ke class category
